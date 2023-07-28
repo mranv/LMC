@@ -1,14 +1,5 @@
 #!/bin/sh
 
-# Wazuh Configuration File Generator
-# Copyright (C) 2015, Wazuh Inc.
-# November 24, 2016.
-#
-# This program is free software; you can redistribute it
-# and/or modify it under the terms of the GNU General Public
-# License (version 2) as published by the FSF - Free Software
-# Foundation.
-
 # Looking up for the execution directory
 cd `dirname $0`
 
