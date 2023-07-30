@@ -2,7 +2,7 @@
 
 # validate OS, linux or macos
 if [ "X$(uname)" = "XLinux" ] ; then
-    # Get Wazuh installation path
+    # Get LMC installation path
     SCRIPT=$(readlink -f "$0")
     WAZUH_HOME=$(dirname $(dirname $(dirname "$SCRIPT")))
     cd "${WAZUH_HOME}"
