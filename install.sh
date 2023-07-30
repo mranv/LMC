@@ -117,9 +117,9 @@ Install()
         fi
     fi
 
-    # If update, stop Wazuh
+    # If update, stop LMC
     if [ "X${update_only}" = "Xyes" ]; then
-        echo "Stopping Wazuh..."
+        echo "Stopping LMC..."
         UpdateStopOSSEC
     fi
 
@@ -128,28 +128,28 @@ Install()
 
     cd ../
 
-    # Install Wazuh ruleset updater
+    # Install LMC ruleset updater
     if [ "X$INSTYPE" = "Xserver" ]; then
         WazuhSetup
     fi
 
-    # Calling the init script to start Wazuh during boot
+    # Calling the init script to start LMC during boot
     runInit $INSTYPE ${update_only}
     runinit_value=$?
 
-    # If update, start Wazuh
+    # If update, start LMC
     if [ "X${update_only}" = "Xyes" ]; then
         WazuhUpgrade
-        # Update versions previous to Wazuh 1.2
+        # Update versions previous to LMC 1.2
         UpdateOldVersions
-        echo "Starting Wazuh..."
+        echo "Starting LMC..."
         UpdateStartOSSEC
     fi
 
     if [ $runinit_value = 1 ]; then
         notmodified="yes"
     elif [ "X$START_WAZUH" = "Xyes" ]; then
-        echo "Starting Wazuh..."
+        echo "Starting LMC..."
         UpdateStartOSSEC
     fi
 
@@ -609,7 +609,7 @@ askForDelete()
 
         case $ANSWER in
             $yesmatch)
-                echo "      Stopping Wazuh..."
+                echo "      Stopping LMC..."
                 UpdateStopOSSEC
                 rm -rf $INSTALLDIR
                 if [ ! $? = 0 ]; then
@@ -1031,7 +1031,7 @@ main()
         fi
         echo ""
 
-        # If version < wazuh 1.2
+        # If version < LMC 1.2
         if [ "X$USER_OLD_NAME" != "XWazuh" ]; then
             echo " ====================================================================================="
             echo "  ${update_rev_newconf1}"
